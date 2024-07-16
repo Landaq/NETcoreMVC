@@ -1,0 +1,9 @@
+﻿@model List<Comment>
+<div>
+    @foreach(var comment in Model)
+    {
+        <div class ="comment">
+            <strong>@comment.Name - @comment.Email</strong>: @comment.Text
+        </div>
+    }
+</div>

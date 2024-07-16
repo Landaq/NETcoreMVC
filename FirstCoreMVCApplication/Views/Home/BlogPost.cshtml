@@ -1,0 +1,12 @@
+﻿@model BlogPost
+@{
+    ViewData["Title"] = "BlogPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Title: @Model.Title</h3>
+<h3>Author: @Model.Author</h3>
+<p>@Model.Content</p>
+
+<!-- Embedding the partial view-->
+<partial name="_Comments" fallback-name="_NavigationMenu" model="Model.Comments" render-mode="ServerPrerendered" />

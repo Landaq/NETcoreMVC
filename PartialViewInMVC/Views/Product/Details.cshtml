@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model PartialViewInMVC.Models.Product
+
+@{
+    ViewData["Title"] = "Details";
+    ViewData["Header"] = "Product Details";
+}
+
+<div>
+    
+
+    <p>Using Tag Helper</p>
+    <partial name="_ProductDetails" model="Model" view-data="ViewData" />
+    <p>Using Html.Partial</p>
+    @Html.Partial("_ProductDetails", Model, ViewData)
+
+    <p>Using Html.PartialAsync</p>
+    @await Html.PartialAsync("_ProductDetails", Model, ViewData)
+
+    <p>Using Html.RenderPartial</p>
+    @{
+        Html.RenderPartial("_ProductDetails", Model, ViewData);
+    }
+
+    <p>Using Html.RenderPartialAsync</p>
+    @{
+        await Html.RenderPartialAsync("_ProductDetails", Model, ViewData);
+    }
+    
+    @* 
+    @{
+        // Html.RenderPartial("_ProductDetails", Model);
+        await Html.RenderPartialAsync("_ProductDetails", Model);
+    }
+    *@
+
+    @* [1]
+    <p>Rendering the Result of Partial View</p>
+     // @Html.Partial("_ProductDetails", Model)
+    @await Html.PartialAsync("_ProductDetails",Model);
+    <br />
+    <p>Storing the Result of Partial View into a variable</p>
+    @{
+        // var result = Html.Partial("_ProductDetails", Model);
+        var result = await Html.PartialAsync("_ProductDetails", Model);
+    }
+    <span>@result</span>
+    *@
+</div>

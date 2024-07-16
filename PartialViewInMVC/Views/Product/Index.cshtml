@@ -1,0 +1,14 @@
+﻿@model IEnumerable<PartialViewInMVC.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>Product List</h4>
+
+
+@foreach (var product in Model)
+{
+    <partial name="_ProductDetails" model="product" />
+}
+
