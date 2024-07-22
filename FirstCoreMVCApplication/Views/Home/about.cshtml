@@ -1,0 +1,20 @@
+﻿@model Employee
+@{
+    ViewBag.Title = "about";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br /><br />
+
+<employee-details for-id="@Model.EmployeeId" for-name="@Model.EmployeeName" for-designation="@Model.Designation">
+
+</employee-details>
+
+<br /><br />
+
+<email for-email="info"></email>
+
+<br /><br />
+
+<a href="https://dotnettutorials.net" exeternal-link>Visit Dot Net Tutorials</a>

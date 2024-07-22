@@ -63,5 +63,36 @@ namespace FirstCoreMVCApplication.Controllers
 
             return View(post);
         }
+
+        public IActionResult about()
+        {
+            Employee employee = new Employee()
+            {
+                EmployeeId = 1,
+                EmployeeName = "Pranaya",
+                Designation = "Manager"
+            };
+            return View(employee);
+        }
+
+        public IActionResult contact()
+        {
+            return View(); 
+        }
+
+        //public ViewResult cacheTagHelper()
+        //{
+        //    return View();
+        //}
+
+        public IActionResult cacheTagHelper(string myParam1, string myParam2)
+        {
+            int num1;
+            int num2;
+            int.TryParse(myParam1, out num1);
+            int.TryParse(myParam2, out num2);
+            return View("cacheTagHelper", num1 + num2);
+        }
+    
     }
 }

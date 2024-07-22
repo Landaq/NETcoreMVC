@@ -1,0 +1,26 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>User Registration Form</h1>
+
+<form method="post" asp-controller="Users" asp-action="create" class="p-4">
+    <div class="mb-3">
+        <label for="Name" class="form-label">Name</label>
+        <input asp-for="Name" class="form-control" placeholder="Enter Your Name" />
+    </div>
+    <div class="mb-3">
+        <label for="Email" class="form-label">Email</label>
+        <input asp-for="Email" class="form-control" placeholder="Enter Your Email" />
+    </div>
+    <div class="mb-3">
+        <label for="Password" class="form-label">Password</label>
+        <input asp-for="Password" class="form-control" placeholder="Enter Your Password" />
+    </div>
+    <div class="mb-3">
+        <label for="Mobile" class="form-label">Mobile</label>
+        <input asp-for="Mobile" class="form-control" placeholder="Enter Your Mobile Number" />
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>

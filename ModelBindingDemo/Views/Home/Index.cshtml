@@ -1,0 +1,15 @@
+﻿@model User
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form method="post" asp-controller="Home" asp-action="SubmitForm">
+    <label>Name:</label>
+    <input asp-for="Name" />
+    <br />
+    <label>Email:</label>
+    <input asp-for="Email" />
+    <br />
+    <button type="submit">Submit</button>
+</form>

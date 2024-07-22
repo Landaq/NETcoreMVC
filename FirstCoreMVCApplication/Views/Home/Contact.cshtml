@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "ViewComponentTagHelper";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>Invoking View Component using Custom Tag helper</p>
+<my-component param="Hello from Tag Helper!"></my-component>
+<br />
+<p>Invoking View Component using Built-in vc Tag helper</p>
+<vc:my-component param="Hello"></vc:my-component>

@@ -1,0 +1,30 @@
+﻿@model int
+
+@{
+    ViewBag.Title = "CacheTagHelper";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<cache vary-by="@Model">
+    <p>Result : @Model</p>
+    Current Time Inside Cache Tag Helper: @DateTime.Now
+</cache>
+
+<br />
+<br />
+
+<cache vary-by="@Context.Request.Query["category"]">
+    Showing products for category: @Context.Request.Query["category"]
+    <br />
+    Current Time Inside Cache Tag Helper: @DateTime.Now
+</cache>
+
+<br />
+<br />
+
+<cache profile="ShortLived">
+    <p>
+        Cached content using the ShortLived profile.
+    </p>
+    Current Time Inside Cache Tag Helper: @DateTime.Now
+</cache>

@@ -7,7 +7,13 @@ namespace FirstCoreMVCApplication
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews(options =>
+            {
+                options.CacheProfiles.Add("ShortLivedCache", new Microsoft.AspNetCore.Mvc.CacheProfile()
+                {
+                    Duration = 60 // 1 min
+                });
+            });
 
             var app = builder.Build();
 
