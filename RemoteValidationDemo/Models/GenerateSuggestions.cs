@@ -1,0 +1,52 @@
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace RemoteValidationDemo.Models
+{
+    public class GenerateSuggestions
+    {
+        private readonly EFCoreDBContext _context;
+
+        public GenerateSuggestions(EFCoreDBContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<string> GenerateUniqueEmailsAsync(string baseEmail, int count =1 )
+        {
+            var suggestions = new List<string>();
+            string emailPrefix = baseEmail.Split('@')[0];
+            string emailDomain = baseEmail.Split('@')[1];
+            string suggestion;
+
+            while (suggestions.Count < count)
+            {
+                do
+                {
+                    suggestion = $"{emailPrefix}{new Random().Next(100, 999)}@{emailDomain}";
+                    //Use AnyAsync to asynchronously check if the email exists
+                } while (await _context.Users.AnyAsync(u => u.Email == suggestion) || suggestions.Contains(suggestion));
+
+                suggestions.Add(suggestion);
+            }
+            return string.Join(", ", suggestions);
+        }
+
+        public async Task<string> GenerateUniqueUsernamesAsync(string baseUsername, int count = 1)
+        {
+            var suggestions = new List<string>();
+            string suggestion;
+
+            while (suggestions.Count < count)
+            {
+                do
+                {
+                    suggestion = $"{baseUsername}{new Random().Next(100, 999)}";
+                } while(await _context.Users.AnyAsync(u => u.UserName == suggestion) || suggestions.Contains(suggestion));
+
+                suggestions.Add(suggestion);
+            }
+
+            return string.Join(", ", suggestions);
+        }
+    }
+}
