@@ -1,6 +1,10 @@
 ﻿namespace DataAnnotiationsDemo.Models
 {
-    public class Department
+    public enum Department
     {
+        None,
+        HR,
+        Payroll,
+        IT
     }
 }
