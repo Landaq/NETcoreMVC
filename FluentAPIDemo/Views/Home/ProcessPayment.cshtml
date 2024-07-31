@@ -1,0 +1,50 @@
+﻿@model FluentAPIDemo.Models.PaymentInfo
+
+@{
+    ViewData["Title"] = "Process Payment Info";
+}
+
+<h1>Process Payment</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ProcessPayment">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="form-group mt-3">
+                <label asp-for="CardNumber" class="control-label"></label>
+                <input asp-for="CardNumber" class="form-control" />
+                <span asp-validation-for="CardNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <label asp-for="CardHolderName" class="control-label"></label>
+                <input asp-for="CardHolderName" class="form-control" />
+                <span asp-validation-for="CardHolderName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <label asp-for="BillingEmail" class="control-label"></label>
+                <input asp-for="BillingEmail" class="form-control" />
+                <span asp-validation-for="BillingEmail" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-3">
+                <input type="submit" value="Process Payment" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
